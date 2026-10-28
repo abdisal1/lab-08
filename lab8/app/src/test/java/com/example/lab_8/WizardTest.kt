@@ -11,7 +11,7 @@ class WizardTest {
     // Set up a new wizard before every single test
     @Before
     fun setUp() {
-        evilWizard = Wizard("Evil Wizard", 30, 10)
+        evilWizard = Wizard("Sixiroole", 30, 10)
     }
 
     @Test
@@ -45,5 +45,19 @@ class WizardTest {
         evilWizard.restoreMana(40) // 30 + 40 = 70, so mana should be set to 70
 
         assertEquals(70, evilWizard.mana)
+    }
+
+    @Test
+    fun train_with_enoughMana() {
+        evilWizard.mana = 5 // Evil Wizard has enough mana to train
+
+        assertEquals(0, evilWizard.mana)
+    }
+
+    @Test
+    fun train_with_notEnoughMana() {
+        evilWizard.mana = 3 // Evil Wizard does not have enough mana to train
+
+        assertEquals(3, evilWizard.mana)
     }
 }
